@@ -61,7 +61,7 @@ export default function PredictionCard({
           title="Voting NO"
           closeText="No (0.25WLD)"
           onClosePressed={() =>
-            toast.success({
+            toast.error({
               title: "Voted NO",
             })
           }

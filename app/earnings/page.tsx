@@ -1,9 +1,9 @@
+import EarningsSummary from '@/components/EarningsSummary'
+
 export default function PageEarnings() {
   return (
-    <main className="min-h-screen p-4">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ducimus
-      atque maxime, assumenda eveniet qui excepturi facilis modi rerum sunt eos
-      quod repellendus numquam! Deleniti ea sed molestiae officiis ipsam?
+    <main className="min-h-screen bg-gray-50 p-4">
+      <EarningsSummary />
     </main>
   )
 }

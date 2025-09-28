@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "@worldcoin/mini-apps-ui-kit-react/styles.css"
 import "./globals.css"
 
+import { Toaster as WorldToaster } from "@worldcoin/mini-apps-ui-kit-react"
 import { Inter } from "next/font/google"
 import { verifySiweMessage } from "@worldcoin/minikit-js"
 import { WorldAppProvider } from "@radish-la/world-auth"
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${nextFont.className} ${nextFont.variable} antialiased`}
       >
+        <WorldToaster />
         <WorldAppProvider
           appName="SonarFinance"
           withValidator={async (sess) => {
