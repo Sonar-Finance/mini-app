@@ -15,7 +15,7 @@ export default function NavigationTop() {
   const { address, signIn } = useWorldAuth()
 
   return (
-    <FixedTopContainer className="border-b shrink-0 px-5 flex items-center gap-4">
+    <FixedTopContainer className="border-b shrink-0 px-5 flex items-center justify-between gap-4">
       <figure className="w-32">
         <Image className="w-full" src={asset_logo} alt="" />
       </figure>

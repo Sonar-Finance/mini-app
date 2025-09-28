@@ -1,4 +1,4 @@
-export default function Home() {
+export default function PageEarnings() {
   return (
     <main className="min-h-screen p-4">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ducimus
