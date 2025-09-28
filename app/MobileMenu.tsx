@@ -13,7 +13,9 @@ import {
 } from "@worldcoin/mini-apps-ui-kit-react"
 
 export default function MobileMenu({ trigger }: { trigger: React.ReactNode }) {
-  const { signOut } = useWorldAuth()
+  const { signOut, address } = useWorldAuth()
+  if (!address) return trigger
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
