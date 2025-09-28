@@ -1,41 +1,39 @@
 "use client"
 
+import { useWorldAuth } from "@radish-la/world-auth"
 import {
   AlertDialog,
   AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
 } from "@worldcoin/mini-apps-ui-kit-react"
 
-export default function MobileMenu({
-  trigger,
-  enabled = true,
-}: {
-  trigger: React.ReactNode
-  enabled?: boolean
-}) {
-  if (!enabled) return trigger
+export default function MobileMenu({ trigger }: { trigger: React.ReactNode }) {
+  const { signOut } = useWorldAuth()
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Your Profile</AlertDialogTitle>
+          <AlertDialogTitle>Manage Profile</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your
-          account and remove your data from our servers.
+          Welcome to Sonar Finance. This is a demo showcasing the future of
+          prediction markets on Worldchain.
         </AlertDialogDescription>
         <div className="grid gap-3">
           <AlertDialogClose asChild>
-            <Button variant="secondary">Cancel</Button>
+            <Button onClick={signOut} variant="secondary">
+              Logout
+            </Button>
           </AlertDialogClose>
-          <Button>Continue</Button>
+          <AlertDialogClose asChild>
+            <Button>Accept & Close</Button>
+          </AlertDialogClose>
         </div>
       </AlertDialogContent>
     </AlertDialog>

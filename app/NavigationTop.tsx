@@ -21,7 +21,6 @@ export default function NavigationTop() {
       </figure>
 
       <MobileMenu
-        //enabled={Boolean(address)}
         trigger={
           <button
             onClick={address ? signIn : undefined}
