@@ -30,11 +30,11 @@ export default function MobileMenu({ trigger }: { trigger: React.ReactNode }) {
         <div className="grid gap-3">
           <AlertDialogClose asChild>
             <Button onClick={signOut} variant="secondary">
-              Logout
+              Disconnect
             </Button>
           </AlertDialogClose>
           <AlertDialogClose asChild>
-            <Button>Accept & Close</Button>
+            <Button>Go back</Button>
           </AlertDialogClose>
         </div>
       </AlertDialogContent>

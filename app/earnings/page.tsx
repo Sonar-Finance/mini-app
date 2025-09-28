@@ -1,4 +1,4 @@
-import EarningsSummary from '@/components/EarningsSummary'
+import EarningsSummary from "@/components/EarningsSummary"
 
 export default function PageEarnings() {
   return (

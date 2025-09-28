@@ -10,9 +10,11 @@ import MobileMenu from "./MobileMenu"
 import FixedTopContainer from "@/components/FixedTopContainer"
 
 import asset_logo from "@/assets/logo.svg"
+import { useWLDBalance } from "@/lib/balances"
 
 export default function NavigationTop() {
   const { address, signIn } = useWorldAuth()
+  const { balance } = useWLDBalance(address)
 
   return (
     <FixedTopContainer className="border-b shrink-0 px-5 flex items-center justify-between gap-4">
@@ -23,15 +25,15 @@ export default function NavigationTop() {
       <MobileMenu
         trigger={
           <button
-            onClick={address ? signIn : undefined}
+            onClick={address ? undefined : signIn}
             className="flex items-center gap-2"
           >
             <div className="font-bold pb-0.5 text-right">
               <h2 className="text-sm">
-                {address ? beautifyAddress(address) : "Connect"}
+                {address ? beautifyAddress(address, 4, "") : "Connect"}
               </h2>
               <p className="!-mt-1 text-xs">
-                {(0).toLocaleString("en-US")} WLD
+                {Number(balance.formatted).toLocaleString("en-US")} WLD
               </p>
             </div>
 

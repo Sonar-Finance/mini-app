@@ -1,20 +1,22 @@
 "use client"
 
+import { Fragment } from "react"
+
 export default function EarningsSummary() {
   return (
-    <div className="max-w-md mx-auto">
+    <Fragment>
       <div className="mb-6">
-        <h1 className="text-xl font-bold text-gray-900 mb-2">Earnings</h1>
+        <h1 className="text-xl font-bold text-gray-900">Earnings</h1>
         <p className="text-sm text-gray-600">Your market performance</p>
       </div>
 
       {/* Earned Balance Card */}
       <div className="bg-white rounded-lg border p-4 mb-4">
         <div className="text-center">
-          <div className="text-sm text-gray-600 mb-1">
-            Earned balance in WLD
+          <div className="text-sm text-gray-600 mb-1">Earned balance</div>
+          <div className="text-3xl font-bold text-gray-900 mb-1">
+            127.43 WLD
           </div>
-          <div className="text-3xl font-bold text-gray-900 mb-1">127.43</div>
           <div className="text-lg text-gray-600">$382.29</div>
         </div>
       </div>
@@ -35,9 +37,9 @@ export default function EarningsSummary() {
       </div>
 
       {/* Propose Market Button */}
-      <button className="w-full bg-sf-blue-dark text-white py-3 px-4 rounded-lg font-medium hover:bg-sf-blue-dark/90 transition-colors">
+      <button className="w-full bg-sf-blue-dark text-white py-3 px-4 rounded-lg font-semibold hover:bg-sf-blue-dark/90 transition-colors">
         Propose Market
       </button>
-    </div>
+    </Fragment>
   )
 }

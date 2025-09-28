@@ -1,0 +1,26 @@
+export function shortifyDecimals(_n: number | string, precision: number = 1) {
+  const n = Number(_n)
+
+  // Early return if the number is not finite
+  if (!Number.isFinite(n)) return "0"
+
+  const formatted = n.toFixed(precision)
+  const [whole, decimal = 0] = formatted.split(".")
+
+  // Early return if no decimal part
+  if (decimal == 0) return whole
+
+  const decimalParts = decimal.split(/0{1,}/g) ?? []
+  const lastValuablePart = decimalParts.at(decimal.startsWith("0") ? 1 : 0)
+  // given "0000002000", then index = 1
+  // given "2000", then index= 0
+
+  // Get the last valuable (non-zero-followed) part of the decimal part
+  if (lastValuablePart) {
+    return `${whole}.${decimal.slice(
+      0,
+      decimal.indexOf(lastValuablePart) + lastValuablePart.length
+    )}`
+  }
+  return `${whole}.${decimal}`
+}

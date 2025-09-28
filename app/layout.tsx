@@ -4,8 +4,8 @@ import "./globals.css"
 
 import { Toaster as WorldToaster } from "@worldcoin/mini-apps-ui-kit-react"
 import { Inter } from "next/font/google"
-import { verifySiweMessage } from "@worldcoin/minikit-js"
 import { WorldAppProvider } from "@radish-la/world-auth"
+import { validateSession } from "@radish-la/world-auth/server"
 import MainLayout from "./MainLayout"
 
 const nextFont = Inter({
@@ -32,10 +32,7 @@ export default function RootLayout({
         <WorldToaster />
         <WorldAppProvider
           appName="SonarFinance"
-          withValidator={async (sess) => {
-            "use server"
-            return verifySiweMessage(sess.payload, sess.nonce)
-          }}
+          withValidator={validateSession}
         >
           <MainLayout>{children}</MainLayout>
         </WorldAppProvider>

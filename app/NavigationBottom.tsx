@@ -40,26 +40,24 @@ export default function NavigationBottom() {
 
   return (
     <Tabs value={activePathValue} asChild>
-      <Fragment>
-        <TabsList asChild>
-          <nav className="border-t shrink-0 [&_a]:shrink-0 z-2 fixed left-0 right-0 bottom-[var(--safe-pb)] !bg-white rounded-none h-auto grid grid-cols-3">
-            <NavItem
-              route={ROUTES.home}
-              icon={<IoStorefront className="text-xl" />}
-            />
+      <TabsList asChild>
+        <nav className="border-t shrink-0 [&_a]:shrink-0 z-2 fixed left-0 right-0 bottom-[var(--safe-pb)] !bg-white rounded-none h-auto grid grid-cols-3">
+          <NavItem
+            route={ROUTES.home}
+            icon={<IoStorefront className="text-xl" />}
+          />
 
-            <NavItem
-              route={ROUTES.trending}
-              icon={<FaArrowTrendUp className="text-xl" />}
-            />
+          <NavItem
+            route={ROUTES.trending}
+            icon={<FaArrowTrendUp className="text-xl" />}
+          />
 
-            <NavItem
-              route={ROUTES.earnings}
-              icon={<FaCoins className="text-lg" />}
-            />
-          </nav>
-        </TabsList>
-      </Fragment>
+          <NavItem
+            route={ROUTES.earnings}
+            icon={<FaCoins className="text-lg" />}
+          />
+        </nav>
+      </TabsList>
     </Tabs>
   )
 }
