@@ -5,6 +5,7 @@ import "./globals.css"
 import { Inter } from "next/font/google"
 import { verifySiweMessage } from "@worldcoin/minikit-js"
 import { WorldAppProvider } from "@radish-la/world-auth"
+import MainLayout from "./MainLayout"
 
 const nextFont = Inter({
   subsets: [],
@@ -34,7 +35,7 @@ export default function RootLayout({
             return verifySiweMessage(sess.payload, sess.nonce)
           }}
         >
-          {children}
+          <MainLayout>{children}</MainLayout>
         </WorldAppProvider>
       </body>
     </html>
