@@ -7,7 +7,8 @@ import { atomWithStorage } from "jotai/utils"
 import asset_whale from "@/assets/whale.svg"
 import asset_bg from "@/assets/bg.webp"
 
-const atomAccepted = atomWithStorage("sf.accepted", false)
+// Assume true by default to avoid flicker on load
+const atomAccepted = atomWithStorage("sf.accepted", true)
 export default function AcceptOverlay() {
   const [accepted, setAccepted] = useAtom(atomAccepted)
   if (accepted) return null
