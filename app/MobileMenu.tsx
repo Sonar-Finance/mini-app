@@ -11,6 +11,7 @@ import {
   AlertDialogTrigger,
   Button,
 } from "@worldcoin/mini-apps-ui-kit-react"
+import Link from "next/link"
 
 export default function MobileMenu({ trigger }: { trigger: React.ReactNode }) {
   const { signOut, address } = useWorldAuth()
@@ -21,20 +22,26 @@ export default function MobileMenu({ trigger }: { trigger: React.ReactNode }) {
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Manage Profile</AlertDialogTitle>
+          <AlertDialogTitle>Manage Wallet</AlertDialogTitle>
         </AlertDialogHeader>
         <AlertDialogDescription>
-          Welcome to Sonar Finance. This is a demo showcasing the future of
-          prediction markets on Worldchain.
+          <Link
+            className="underline-offset-4 font-semibold underline"
+            href="https://sonar.trading"
+            target="_blank"
+          >
+            Sonar Finance:
+          </Link>{" "}
+          Shaping the future of prediction markets on Worldchain.{" "}
         </AlertDialogDescription>
-        <div className="grid gap-3">
+        <div className="grid mt-8 gap-3">
           <AlertDialogClose asChild>
             <Button onClick={signOut} variant="secondary">
               Disconnect
             </Button>
           </AlertDialogClose>
           <AlertDialogClose asChild>
-            <Button>Go back</Button>
+            <Button>Back to App</Button>
           </AlertDialogClose>
         </div>
       </AlertDialogContent>
