@@ -5,6 +5,7 @@ import { PREDICTIONS } from "@/components/PredictionsList"
 import { ADDRESS_REGISTRY, ZERO } from "./constants"
 
 const ABI = parseAbi([
+  "function get_user_deposits(address user) external view returns (uint256 deposits)",
   "function market_balance(uint256 market_id) public view returns (uint256 yes, uint256 no)",
 ])
 
@@ -37,9 +38,28 @@ export const usePositions = (address?: Address) => {
       })
     },
     {
-      refreshInterval: 3_000, // 3 seconds
+      refreshInterval: 2_500, // 3 seconds
     }
   )
 
-  return { positions }
+  const { data: totalDeposits = ZERO } = useSWR(
+    address ? `deposits.${address}` : null,
+    async () => {
+      if (!address) return ZERO
+      const deposits = await worldClient.readContract({
+        abi: ABI,
+        address: ADDRESS_REGISTRY,
+        account: address,
+        functionName: "get_user_deposits",
+        args: [address],
+      })
+
+      return deposits
+    },
+    {
+      refreshInterval: 2_500, // 2.5 seconds
+    }
+  )
+
+  return { positions, totalDeposits }
 }

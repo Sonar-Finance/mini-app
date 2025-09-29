@@ -10,13 +10,15 @@ import { usePositions } from "@/lib/positions"
 import { ABI_REGISTRY } from "./PredictionCard"
 import { ADDRESS_REGISTRY } from "@/lib/constants"
 import ReusableDialog from "./ReusableDialog"
+import { formatEther } from "viem"
+import { shortifyDecimals } from "@/lib/numbers"
 
 export default function EarningsSummary() {
   const [inputValue, setInputValue] = useState("")
   const { address, signIn } = useWorldAuth()
   const { toast } = useToast()
 
-  const { positions } = usePositions(address)
+  const { positions, totalDeposits } = usePositions(address)
 
   async function handleProposeMarket() {
     const PROMPT = inputValue.trim()
@@ -70,6 +72,8 @@ export default function EarningsSummary() {
     }
   }
 
+  const EARNED_WLD = 127.43 + Number(formatEther(totalDeposits))
+
   return (
     <Fragment>
       <div className="mb-6 flex items-center justify-between">
@@ -88,11 +92,13 @@ export default function EarningsSummary() {
       {/* Earned Balance Card */}
       <div className="bg-white rounded-lg border p-4 mb-4">
         <div className="text-center">
-          <div className="text-sm text-gray-600 mb-1">Earned balance</div>
+          <div className="text-sm text-gray-600 mb-1">Account balance</div>
           <div className="text-3xl font-bold text-gray-900 mb-1">
-            127.43 WLD
+            {shortifyDecimals(EARNED_WLD, 4)} WLD
           </div>
-          <div className="text-lg text-gray-600">$382.29</div>
+          <div className="text-lg text-gray-600">
+            ${(EARNED_WLD * 1.26).toLocaleString("en-US")}
+          </div>
         </div>
       </div>
 
