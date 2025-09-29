@@ -32,7 +32,7 @@ export default function NavigationTop() {
               <h2 className="text-sm">
                 {address ? beautifyAddress(address, 4, "") : "Connect"}
               </h2>
-              <p className="!-mt-1 text-xs">
+              <p className="-mt-1 text-green-600 text-xs">
                 {Number(balance.formatted).toLocaleString("en-US")} WLD
               </p>
             </div>

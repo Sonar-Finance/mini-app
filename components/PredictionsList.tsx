@@ -1,6 +1,23 @@
 import PredictionCard from "./PredictionCard"
 
-const predictions = [
+export default function PredictionsList() {
+  return (
+    <div className="w-full mb-24">
+      {PREDICTIONS.map((prediction) => (
+        <PredictionCard
+          key={`prediction-${prediction.id}`}
+          question={prediction.question}
+          marketId={BigInt(prediction.id)}
+          yesPercentage={prediction.yesPercentage}
+          volume={prediction.volume}
+          icon={prediction.icon}
+        />
+      ))}
+    </div>
+  )
+}
+
+export const PREDICTIONS = [
   {
     id: 1,
     question: "Worldchain TVL reaches $1B by end of 2025?",
@@ -38,19 +55,3 @@ const predictions = [
     icon: "🏆",
   },
 ]
-
-export default function PredictionsList() {
-  return (
-    <div className="w-full mb-24">
-      {predictions.map((prediction) => (
-        <PredictionCard
-          key={prediction.id}
-          question={prediction.question}
-          yesPercentage={prediction.yesPercentage}
-          volume={prediction.volume}
-          icon={prediction.icon}
-        />
-      ))}
-    </div>
-  )
-}

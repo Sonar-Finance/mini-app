@@ -2,6 +2,7 @@ import type { JSX, PropsWithChildren, ReactNode } from "react"
 
 import {
   AlertDialog,
+  AlertDialogTitle,
   AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
@@ -38,7 +39,9 @@ export default function ReusableDialog({
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent className="[&_.size-10]:translate-x-2 [&_[aria-role=header]]:items-start [&_.size-10]:-translate-y-2">
         <AlertDialogHeader aria-role="header">
-          <h2 className="text-2xl font-semibold">{title}</h2>
+          <AlertDialogTitle asChild>
+            <div className="text-2xl font-semibold">{title}</div>
+          </AlertDialogTitle>
         </AlertDialogHeader>
 
         <AlertDialogDescription asChild>

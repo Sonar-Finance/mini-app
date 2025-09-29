@@ -9,7 +9,7 @@ import useSWR from "swr"
 import { worldchain } from "viem/chains"
 import { ADDRESS_WORLD_COIN, ZERO } from "./constants"
 
-const worldClient = createPublicClient({
+export const worldClient = createPublicClient({
   chain: worldchain,
   transport: http(),
 })
